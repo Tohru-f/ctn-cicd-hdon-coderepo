@@ -1,0 +1,26 @@
+{
+    "cluster": "ctn-cicd-hdon-cluster",
+    "serviceName": "ctn-cicd-hdon-servForCicd",
+    "taskDefinition": "arn:aws:ecs:ap-northeast-1:513636860721:task-definition/ctn-cicd-hdon-taskd:2",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:ap-northeast-1:513636860721:targetgroup/ctn-cicd-hdon-trg2/eefd54dddd4f75d7",
+            "containerName": "ctn-cicd-hdon-cont",
+            "containerPort": 80
+        }
+    ],
+    "launchType": "FARGATE",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "platformVersion": "LATEST",
+    "networkConfiguration": {
+       "awsvpcConfiguration": {
+          "assignPublicIp": "ENABLED",
+          "securityGroups": [ "sg-03a446cd481020207" ],
+          "subnets": [ "subnet-072f1e6d068860bd9", "subnet-0c2b12fb6d0a98078" ]
+       }
+    },
+    "desiredCount": 1
+}
